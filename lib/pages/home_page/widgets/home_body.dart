@@ -1,9 +1,10 @@
 import 'package:cars_web/core/widgets/bordered_button.dart';
+import 'package:cars_web/pages/home_page/widgets/all_cars/all_cars.dart';
 import 'package:cars_web/pages/home_page/widgets/new_cars/new_cars_list.dart';
 import 'package:flutter/cupertino.dart';
 
-class NewCars extends StatelessWidget {
-  const NewCars({super.key});
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,11 @@ class NewCars extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
+        const Text(
+          "جميع السيارات",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        const AllCars()
       ],
     );
   }

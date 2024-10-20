@@ -1,4 +1,4 @@
-import 'package:cars_web/pages/home_page/widgets/new_cars/new_cars.dart';
+import 'package:cars_web/pages/home_page/widgets/home_body.dart';
 import 'package:cars_web/pages/home_page/widgets/phone_header.dart';
 import 'package:cars_web/pages/home_page/widgets/search_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -75,11 +75,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.1,
-              ),
-              child: const NewCars(),
-            )
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.1,),
+              child: const HomeBody(),
+            ),
           ],
         ),
       ),
