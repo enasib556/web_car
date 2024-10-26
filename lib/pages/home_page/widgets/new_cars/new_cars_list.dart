@@ -1,8 +1,10 @@
+import 'package:cars_web/utils/responsive_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class NewCarsList extends StatelessWidget {
-  const NewCarsList({super.key});
-
+   NewCarsList({super.key});
+  final ResponsiveHelper responsiveHelper = GetIt.instance<ResponsiveHelper>();
   @override
   Widget build(BuildContext context) {
     // Sample car data
@@ -33,45 +35,100 @@ class NewCarsList extends StatelessWidget {
         'imageUrl': 'https://carsales.pxcrush.net/car/cil/dvaynxbvo13vedi65aw7nzj83.jpg',
       },
     ];
-
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: cars.map((car) {
-          return Column(
-            children: [
-              // Car image with border radius
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                  car['imageUrl']!,
-                  width: 190,
-                  height: 126,
-                  fit: BoxFit.cover,
+    if(responsiveHelper.isDesktop(context))
+      {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: cars.map((car) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Column(
+                    children: [
+                      // Car image with border radius
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.network(
+                          car['imageUrl']!,
+                          width: 190,
+                          height: 126,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      // Car name and price
+                      Text(
+                        car['name']!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        car['price']!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        );
+      }
+    else {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: cars.map((car) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  children: [
+                    // Car image with border radius
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.network(
+                        car['imageUrl']!,
+                        width: 100,
+                        height: 80,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Car name and price
+                    Text(
+                      car['name']!,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      car['price']!,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 8),
-              // Car name and price
-              Text(
-                car['name']!,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                car['price']!,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          );
-        }).toList(),
-      ),
-    );
+              );
+            }).toList(),
+          ),
+        ),
+      );
+    }
   }
 }

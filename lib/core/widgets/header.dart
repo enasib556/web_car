@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../constants.dart';
 import '../../l10n/app_localizations.dart';
 import '../../model/locale.dart';
+import '../routing/routes.dart';
 import 'nav_button.dart';
 
 class Header extends StatelessWidget {
@@ -34,10 +35,10 @@ class Header extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                NavButton(label: AppLocalizations.of(context)!.home!),
-                                NavButton(label: AppLocalizations.of(context)!.buy!),
-                                NavButton(label: AppLocalizations.of(context)!.sell!),
-                                NavButton(label: AppLocalizations.of(context)!.contactUs!),
+                                NavButton(label: AppLocalizations.of(context)!.home!, ontap: () { Navigator.pushNamed(context, Routes.homeScreen); },),
+                                NavButton(label: AppLocalizations.of(context)!.buy!, ontap: () { Navigator.pushNamed(context, Routes.buyScreen);  },),
+                                NavButton(label: AppLocalizations.of(context)!.contactUs!, ontap: () {  },),
+                                NavButton(label: AppLocalizations.of(context)!.help!, ontap: () {  },),
                               ],
                             ),
                             Row(

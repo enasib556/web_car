@@ -4,10 +4,15 @@ import 'package:cars_web/pages/home_page/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
 import 'l10n/app_localizations.dart';
 import 'model/locale.dart';
 
 class CarsWebsite extends StatelessWidget {
+  final AppRouter appRouter;
+
+  const CarsWebsite({super.key, required this.appRouter});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -33,7 +38,8 @@ class CarsWebsite extends StatelessWidget {
             Locale('en', ''),
             Locale('ar', ''),
           ],
-          home: HomePage(),
+          initialRoute: Routes.homeScreen,
+          onGenerateRoute: appRouter.generateRoute,
         ),
       ),
     );

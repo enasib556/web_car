@@ -1,13 +1,9 @@
+import 'package:cars_web/pages/home_page/widgets/footer/footer.dart';
 import 'package:cars_web/pages/home_page/widgets/home_body.dart';
 import 'package:cars_web/pages/home_page/widgets/phone_header.dart';
 import 'package:cars_web/pages/home_page/widgets/search_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cars_web/core/widgets/end_drawer.dart';
-import 'package:flutter/widgets.dart';
-import '../../constants.dart';
-import '../../core/widgets/green_button.dart';
-import '../../l10n/app_localizations.dart';
 import '../../utils/responsive_helper.dart';
 import '../../core/widgets/header.dart';
 import 'package:get_it/get_it.dart';
@@ -26,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       endDrawer: const MyEndDrawer(),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -74,10 +71,12 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.1,),
+            Container(
+              padding: !responsiveHelper.isMobile(context) ? EdgeInsets.symmetric(horizontal: size.width * 0.1,) : null,
               child: const HomeBody(),
             ),
+           const  SizedBox(height: 30,),
+            if (responsiveHelper.isDesktop(context)) const Footer()
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/green_button.dart';
@@ -19,7 +20,7 @@ class PhoneHeader extends StatelessWidget {
         ),
         SizedBox(height: 20,),
         GreenButton(
-          label: "ابحث عن سيارات",
+          label:AppLocalizations.of(context)!.getCar!,
           onPressed: () {
             // Handle button press
           },

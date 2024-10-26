@@ -258,7 +258,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    width: size.width * 0.04,
+                    width: size.width * 0.05,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
                       hint: const Padding(
@@ -305,7 +305,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    width: size.width * 0.07,
+                    width: size.width * 0.09,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
                       hint: const Padding(
@@ -352,7 +352,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    width: size.width * 0.05,
+                    width: size.width * 0.07,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
                       hint: const Padding(
@@ -399,7 +399,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    width: size.width * 0.05,
+                    width: size.width * 0.07,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
                       hint: const Padding(
