@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../core/widgets/my_card.dart';
+import '../../../l10n/app_localizations.dart';
 
 class SearchWidget extends StatefulWidget {
-  SearchWidget({super.key});
+  const SearchWidget({super.key});
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
@@ -27,6 +28,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     return MyCard(
       height: 400,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 120,
@@ -42,9 +44,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'الماركة:',
-                            style: TextStyle(
+                           Text(
+                            AppLocalizations.of(context)!.make!,
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -57,11 +59,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                             child: DropdownButton<String>(
                               value: selectedBodyType,
-                              hint: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                              hint:  Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
-                                  'اختر الماركة',
-                                  style: TextStyle(fontSize: 14),
+                                  AppLocalizations.of(context)!.allmakes!,
+                                  style:const  TextStyle(fontSize: 14),
                                 ),
                               ),
                               onChanged: (String? newValue) {
@@ -91,7 +93,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           color: Colors.blue, width: 1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    padding: EdgeInsets.all(12),
+                                    padding: const EdgeInsets.all(12),
                                     child: Text(item),
                                   );
                                 }).toList();
@@ -106,9 +108,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'الموديل:',
-                            style: TextStyle(
+                           Text(
+                          AppLocalizations.of(context)!.model!,
+                            style:const  TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -121,11 +123,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                             child: DropdownButton<String>(
                               value: selectedBodyType,
-                              hint: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                              hint:  Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
-                                  'اختر الموديل',
-                                  style: TextStyle(fontSize: 14),
+                                    AppLocalizations.of(context)!.allmodels!,
+                                  style: const TextStyle(fontSize: 14),
                                 ),
                               ),
                               onChanged: (String? newValue) {
@@ -140,11 +142,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       child: Text(value),
                                     );
                                   }).toList(),
-                              style: TextStyle(color: Colors.black),
-                              underline: SizedBox(),
+                              style: const TextStyle(color: Colors.black),
+                              underline: const SizedBox(),
                               // Removes the underline
                               dropdownColor: Colors.white,
-                              icon: Icon(Icons.arrow_drop_down),
+                              icon:const Icon(Icons.arrow_drop_down),
                               elevation: 8,
                               isExpanded: true,
                               selectedItemBuilder: (BuildContext context) {
@@ -155,7 +157,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           color: Colors.blue, width: 1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    padding: EdgeInsets.all(12),
+                                    padding: const EdgeInsets.all(12),
                                     child: Text(item),
                                   );
                                 }).toList();
@@ -170,9 +172,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'نوع الجسم:',
-                            style: TextStyle(
+                           Text(
+                          AppLocalizations.of(context)!.bodytype!,
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
@@ -185,11 +187,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                             child: DropdownButton<String>(
                               value: selectedBodyType,
-                              hint: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                              hint:  Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
-                                  'اختر نوع الجسم',
-                                  style: TextStyle(fontSize: 14),
+                                    AppLocalizations.of(context)!.allbodytypes!,
+                                  style: const TextStyle(fontSize: 14),
                                 ),
                               ),
                               onChanged: (String? newValue) {
@@ -219,7 +221,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           color: Colors.blue, width: 1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    padding: EdgeInsets.all(12),
+                                    padding: const EdgeInsets.all(12),
                                     child: Text(item),
                                   );
                                 }).toList();
@@ -240,9 +242,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16), // Adjust padding as needed
                   ),
-                  child: const Text(
-                    'بحث',
-                    style: TextStyle(
+                  child:  Text(
+                    AppLocalizations.of(context)!.search!,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                     ),
@@ -252,20 +254,20 @@ class _SearchWidgetState extends State<SearchWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: size.width * 0.05,
+                  child: SizedBox(
+                    width: size.width * 0.07,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
-                      hint: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                      hint:  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
-                          'الموقع',
-                          style: TextStyle(fontSize: 14),
+                          AppLocalizations.of(context)!.location!,
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ),
                       onChanged: (String? newValue) {
@@ -280,11 +282,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                           child: Text(value),
                         );
                       }).toList(),
-                      style: TextStyle(color: Colors.black),
-                      underline: SizedBox(),
+                      style: const TextStyle(color: Colors.black),
+                      underline: const SizedBox(),
                       // Removes the underline
                       dropdownColor: Colors.white,
-                      icon: Icon(Icons.arrow_drop_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       elevation: 8,
                       isExpanded: true,
                       selectedItemBuilder: (BuildContext context) {
@@ -294,7 +296,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               border: Border.all(color: Colors.blue, width: 1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             child: Text(item),
                           );
                         }).toList();
@@ -304,15 +306,15 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: size.width * 0.09,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
-                      hint: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                      hint:  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
-                          'جديد ومستعمل',
-                          style: TextStyle(fontSize: 14),
+                          AppLocalizations.of(context)!.newandused!,
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ),
                       onChanged: (String? newValue) {
@@ -327,11 +329,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                           child: Text(value),
                         );
                       }).toList(),
-                      style: TextStyle(color: Colors.black),
-                      underline: SizedBox(),
+                      style: const TextStyle(color: Colors.black),
+                      underline: const SizedBox(),
                       // Removes the underline
                       dropdownColor: Colors.white,
-                      icon: Icon(Icons.arrow_drop_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       elevation: 8,
                       isExpanded: true,
                       selectedItemBuilder: (BuildContext context) {
@@ -341,7 +343,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               border: Border.all(color: Colors.blue, width: 1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             child: Text(item),
                           );
                         }).toList();
@@ -351,15 +353,15 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: size.width * 0.07,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
-                      hint: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                      hint:  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
-                          'أقل سعر',
-                          style: TextStyle(fontSize: 14),
+                          AppLocalizations.of(context)!.lowprice!,
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ),
                       onChanged: (String? newValue) {
@@ -374,11 +376,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                           child: Text(value),
                         );
                       }).toList(),
-                      style: TextStyle(color: Colors.black),
-                      underline: SizedBox(),
+                      style: const TextStyle(color: Colors.black),
+                      underline: const SizedBox(),
                       // Removes the underline
                       dropdownColor: Colors.white,
-                      icon: Icon(Icons.arrow_drop_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       elevation: 8,
                       isExpanded: true,
                       selectedItemBuilder: (BuildContext context) {
@@ -388,7 +390,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               border: Border.all(color: Colors.blue, width: 1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             child: Text(item),
                           );
                         }).toList();
@@ -398,15 +400,15 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: size.width * 0.07,
                     child: DropdownButton<String>(
                       value: selectedBodyType,
-                      hint: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                      hint:  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
-                          'أعلى سعر',
-                          style: TextStyle(fontSize: 14),
+                            AppLocalizations.of(context)!.highprice! ,
+                        style: const TextStyle(fontSize: 14),
                         ),
                       ),
                       onChanged: (String? newValue) {
@@ -421,11 +423,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                           child: Text(value),
                         );
                       }).toList(),
-                      style: TextStyle(color: Colors.black),
-                      underline: SizedBox(),
+                      style: const TextStyle(color: Colors.black),
+                      underline: const SizedBox(),
                       // Removes the underline
                       dropdownColor: Colors.white,
-                      icon: Icon(Icons.arrow_drop_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       elevation: 8,
                       isExpanded: true,
                       selectedItemBuilder: (BuildContext context) {
@@ -435,7 +437,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               border: Border.all(color: Colors.blue, width: 1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             child: Text(item),
                           );
                         }).toList();
@@ -450,11 +452,13 @@ class _SearchWidgetState extends State<SearchWidget> {
           const SizedBox(
             height: 10,
           ),
-          const Align(
-            alignment: Alignment.topRight,
-            child: Text('البحث حسب السيارة',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
-          ),
+           Padding(
+             padding: const EdgeInsets. symmetric(horizontal: 15),
+             child: Text(AppLocalizations.of(context)!.searchbycar! ,
+                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                 textAlign: TextAlign.start,
+             ),
+           ),
           Row(
             children: [
               Column(
@@ -463,9 +467,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     'https://resource.csnstatic.com/mobile/carsales/api/home-categories/Family.png',
                     height: 80,
                   ),
-                  const Text(
-                    'عائلية',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                   Text(
+                      AppLocalizations.of(context)!.family!,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   )
                 ],
               ),
@@ -475,9 +479,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     'https://resource.csnstatic.com/mobile/carsales/api/home-categories/First.png',
                     height: 80,
                   ),
-                  const Text(
-                    'عادية',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                   Text(
+                      AppLocalizations.of(context)!.ordinary! ,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   )
                 ],
               ),
@@ -487,9 +491,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     'https://resource.csnstatic.com/mobile/carsales/api/home-categories/Prestige.png',
                     height: 80,
                   ),
-                  const Text(
-                    'فاخرة',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                   Text(
+                    AppLocalizations.of(context)!.luxurious! ,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   )
                 ],
               ),

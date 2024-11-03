@@ -1,6 +1,5 @@
 import 'package:cars_web/pages/details_cars_page/widgets/tab_bar.dart';
 import 'package:flutter/material.dart';
-import '../../../core/models/carDetails.dart';
 import '../../../utils/responsive_helper.dart';
 import 'car_images.dart';
 import 'car_specifications.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cars_web/constants.dart';
-import 'package:cars_web/pages/home_page/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';

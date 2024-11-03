@@ -1,8 +1,10 @@
-import 'package:cars_web/core/models/carDetails.dart'; // Ensure this path is correct
 import 'package:cars_web/core/routing/routes.dart';
+import 'package:cars_web/pages/Sell_page/sell_page.dart';
 import 'package:cars_web/pages/details_cars_page/details_car_page.dart';
 import 'package:cars_web/pages/buy_page/buy_page.dart';
 import 'package:cars_web/pages/home_page/home_page.dart';
+import 'package:cars_web/pages/login_page/login_page.dart';
+import 'package:cars_web/pages/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -12,7 +14,7 @@ class AppRouter {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => HomePage(),
+          builder: (_) => const HomePage(),
         );
       case Routes.buyScreen:
         return MaterialPageRoute(
@@ -26,6 +28,21 @@ class AppRouter {
       case Routes.DetailsCarPage:
         return MaterialPageRoute(
           builder: (_) =>  DetailsCarPage(),
+        );
+
+      case Routes.sellScreen:
+        return MaterialPageRoute(
+          builder: (_) => const  SellPage(),
+        );
+
+      case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => const  LoginPage(),
+        );
+
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignupPage(),
         );
       default:
         return null;

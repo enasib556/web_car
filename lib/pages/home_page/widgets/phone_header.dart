@@ -1,6 +1,7 @@
 import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../../core/widgets/green_button.dart';
 
 class PhoneHeader extends StatelessWidget {
@@ -11,18 +12,18 @@ class PhoneHeader extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "إحصل على سيارتك الجديدة",
-          style: TextStyle(
+          AppLocalizations.of(context)!.getCar!,
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         GreenButton(
           label:AppLocalizations.of(context)!.getCar!,
           onPressed: () {
-            // Handle button press
+            Navigator.pushNamed(context, Routes.buyScreen);
           },
         ),
       ],

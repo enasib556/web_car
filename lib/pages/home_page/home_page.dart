@@ -9,6 +9,8 @@ import '../../core/widgets/header.dart';
 import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Column(
                     children: [
-                      Header(),
+                     const Header(),
                       Column(
                         children: [
                           Stack(
@@ -61,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       top: 360,
                       left: size.width * 0.1,
                       right: size.width * 0.1,
-                      child: SearchWidget(),
+                      child: const SearchWidget(),
                     )
                   else
                     const Positioned(
@@ -73,7 +75,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               padding: !responsiveHelper.isMobile(context) ? EdgeInsets.symmetric(horizontal: size.width * 0.1,) : null,
-              child: const HomeBody(),
+              child:  HomeBody(),
             ),
            const  SizedBox(height: 30,),
             if (responsiveHelper.isDesktop(context)) const Footer()

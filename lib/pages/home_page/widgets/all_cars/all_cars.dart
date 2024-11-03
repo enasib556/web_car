@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import '../../../../constants.dart';
@@ -20,31 +21,26 @@ class _AllCarsState extends State<AllCars> {
   final List<Map<String, String>> cars = [
     {
       "name": "Car 1",
-      "price": "\$20,000",
       "image":
           "https://editorial.pxcrush.net/carsales/general/editorial/2024-volkswagen-skoda-cupra-europe-021.jpg",
     },
     {
       "name": "Car 2",
-      "price": "\$25,000",
       "image":
           "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
     },
     {
       "name": "Car 3",
-      "price": "\$30,000",
       "image":
           "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
     },
     {
       "name": "Car 4",
-      "price": "\$35,000",
       "image":
           "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
     },
     {
       "name": "Car 5",
-      "price": "\$40,000",
       "image":
           "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
     },
@@ -59,11 +55,11 @@ class _AllCarsState extends State<AllCars> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(
+               SizedBox(
                 width: 130,
                 child: Text(
-                  "جميع السيارات",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  AppLocalizations.of(context)!.allcars!,
+                  style:const  TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
               const Spacer(),
@@ -85,9 +81,9 @@ class _AllCarsState extends State<AllCars> {
                   onPressed: () {
                     Navigator.pushNamed(context, Routes.buyScreen);
                   },
-                  child: const Text(
-                    "اعرض المزيد",
-                    style: TextStyle(
+                  child:  Text(
+                    AppLocalizations.of(context)!.show_more!,
+                    style: const TextStyle(
                       fontSize: 16,
                       color: kGreenColor,
                       fontWeight: FontWeight.bold,
@@ -149,22 +145,13 @@ class _AllCarsState extends State<AllCars> {
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 1),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      cars[index]["name"]!,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      cars[index]["price"]!,
-                      style: const TextStyle(fontSize: 16, color: Colors.grey),
-                    ),
-                  ],
+                padding: const EdgeInsets.all(28.0),
+                child: Text(
+                  cars[index]["name"]!,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
             ],

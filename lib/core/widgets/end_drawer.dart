@@ -1,9 +1,11 @@
 import 'package:cars_web/core/icons/icons.dart';
 import 'package:cars_web/core/routing/routes.dart';
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
+import '../../pages/login_page/widgets/user_provider.dart';
 import '../../utils/responsive_helper.dart';
-import '../routing/app_router.dart';
 
 class MyEndDrawer extends StatefulWidget {
   const MyEndDrawer({super.key});
@@ -25,6 +27,10 @@ class _MyEndDrawerState extends State<MyEndDrawer> {
   @override
   Widget build(BuildContext context) {
     final ResponsiveHelper responsiveHelper = GetIt.instance<ResponsiveHelper>();
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final bool isLoggedIn = authProvider.isLoggedIn;
+    final String userEmail = 'your_email@example.com'; // Replace with actual email if needed
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -34,13 +40,71 @@ class _MyEndDrawerState extends State<MyEndDrawer> {
             child: DrawerHeader(
               child: Center(
                 child: ListTile(
-                  leading:  Image.asset(IconsApp.user,width: 30,height: 30,),
-                  title: const Text(
-                    'الاشتراك / تسجيل الدخول',
-                    style: TextStyle(color: Colors.blue,fontSize: 13,fontWeight: FontWeight.bold),
+                  title: isLoggedIn
+                      ? PopupMenuButton<int>(
+                    icon: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 120),
+                      child: Icon(
+                        Icons.account_circle,
+                        color: Color(0xff4D4D4D),
+                        size: 35,
+                      ),
+                    ),
+                    color: Colors.white,
+                    offset: const Offset(-70, 50),
+                    onSelected: (value) {
+                      if (value == 1) {
+                        // Navigate to profile if needed
+                      } else if (value == 2) {
+                        authProvider.logout();
+                        setState(() {
+                          // After logout, show login/signup button again
+                        });
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        value: 1,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 200),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                userEmail,
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                              const Divider(),
+                            ],
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 2,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 170),
+                          child: const Text(
+                            'Logout',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                      : InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.loginScreen);
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.signupLogin!,
+                      style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   trailing: Padding(
-                    padding: const EdgeInsets.only(right:10),
+                    padding: const EdgeInsets.only(right: 10),
                     child: Stack(
                       children: [
                         const Icon(
@@ -77,90 +141,74 @@ class _MyEndDrawerState extends State<MyEndDrawer> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: ListTile(
-              title: InkWell(onTap: (){Navigator.pushNamed(context, Routes.homeScreen);},child: const Text('الرئيسية',style: TextStyle(fontWeight: FontWeight.bold),)),
-              onTap: () {
-                _incrementNotification(); // Increment notification on tap
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: ListTile(
-              title: InkWell(onTap: (){Navigator.pushNamed(context, Routes.buyScreen);},child: const Text('شراء',style: TextStyle(fontWeight: FontWeight.bold),)),
-              trailing: IconButton(onPressed: (){Navigator.pushNamed(context, Routes.buyScreen); }, icon:const Icon(Icons.keyboard_arrow_left_outlined)),
-              onTap: () {
-                _incrementNotification(); // Increment notification on tap
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: ListTile(
-              title: const Text('حسابي',style: TextStyle(fontWeight: FontWeight.bold),),
-              trailing: IconButton(onPressed: (){}, icon:const Icon(Icons.keyboard_arrow_left_outlined)),
-              onTap: () {
-                _incrementNotification(); // Increment notification on tap
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: ListTile(
-              title: const Text('التواصل معنا',style: TextStyle(fontWeight: FontWeight.bold),),
-              trailing: IconButton(onPressed: (){}, icon:  const Icon(Icons.keyboard_arrow_left_outlined)),
-              onTap: () {
-                _incrementNotification(); // Increment notification on tap
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: ListTile(
-              title: const Text('المساعده',style: TextStyle(fontWeight: FontWeight.bold),),
-              trailing: IconButton(onPressed: (){}, icon:  const Icon(Icons.keyboard_arrow_left_outlined)),
-              onTap: () {
-                _incrementNotification(); // Increment notification on tap
-              },
-            ),
-          ),
-          const SizedBox(height: 20,),
+          ...[
+            _buildListTile(context, Routes.homeScreen, AppLocalizations.of(context)!.home!),
+            _buildListTile(context, Routes.buyScreen, AppLocalizations.of(context)!.buy!),
+            _buildListTile(context, Routes.buyScreen, AppLocalizations.of(context)!.electricCar!),
+            _buildListTile(context, Routes.sellScreen, AppLocalizations.of(context)!.sell!),
+            _buildListTile(context, null, AppLocalizations.of(context)!.contactUs!),
+          ],
+          const SizedBox(height: 20),
           const Divider(color: Color(0xffb3b3b3)),
-          const SizedBox(height: 20,),
-          const Padding(
-            padding:  EdgeInsets.only(right: 20),
-            child:  ListTile(
-              title:  Text('الشروط والأحكام',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-            ),
-          ),
-          const Padding(
-            padding:  EdgeInsets.only(right: 20),
-            child:  ListTile(
-              title:  Text('خصوصية',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold),),
-            ),
-          ),
-          SizedBox(height: responsiveHelper.isTablet(context)?50:30),
+          const SizedBox(height: 20),
+          _buildTextTile(AppLocalizations.of(context)!.termsAndConditions!, Colors.grey),
+          _buildTextTile(AppLocalizations.of(context)!.privacy!, Colors.grey),
+          SizedBox(height: responsiveHelper.isTablet(context) ? 50 : 30),
           const Divider(color: Color(0xffb3b3b3)),
-          const SizedBox(height: 30,),
+          const SizedBox(height: 30),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(right: 50),
               child: Row(
                 children: [
-                 Image.asset(IconsApp.facebook,height: 40, width: 40,),
-                  const SizedBox(width: 10,),
-                  Image.asset(IconsApp.twitter,height: 40, width: 40,),
-                  const SizedBox(width: 10,),
-                  Image.asset(IconsApp.instgram,height: 40, width: 40,),
-                  const SizedBox(width: 10,),
-                  Image.asset(IconsApp.youtube,height: 40, width: 40,),
+                  Image.asset(IconsApp.facebook, height: 40, width: 40),
+                  const SizedBox(width: 10),
+                  Image.asset(IconsApp.twitter, height: 40, width: 40),
+                  const SizedBox(width: 10),
+                  Image.asset(IconsApp.instgram, height: 40, width: 40),
+                  const SizedBox(width: 10),
+                  Image.asset(IconsApp.youtube, height: 40, width: 40),
                 ],
               ),
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _buildListTile(BuildContext context, String? route, String title) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: ListTile(
+        title: InkWell(
+          onTap: route != null ? () => Navigator.pushNamed(context, route) : null,
+          child: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        trailing: route != null
+            ? IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, route);
+          },
+          icon: const Icon(Icons.keyboard_arrow_left_outlined),
+        )
+            : null,
+        onTap: _incrementNotification,
+      ),
+    );
+  }
+
+  Widget _buildTextTile(String title, Color color) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: ListTile(
+        title: Text(
+          title,
+          style: TextStyle(color: color, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

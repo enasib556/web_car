@@ -1,4 +1,4 @@
-import 'package:cars_web/core/models/carDetails.dart'; // Ensure this path is correct
+
 import 'package:cars_web/pages/details_cars_page/widgets/car_datails_section.dart';
 import 'package:cars_web/pages/details_cars_page/widgets/contact_formSection.dart';
 import 'package:cars_web/pages/details_cars_page/widgets/sidebar_filter_widget.dart';
@@ -22,7 +22,7 @@ class DetailsCarPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Header(),
+            const Header(),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: responsiveHelper.isDesktop(context)

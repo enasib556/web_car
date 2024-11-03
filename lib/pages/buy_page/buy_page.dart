@@ -1,10 +1,11 @@
+import 'package:cars_web/core/Theming/font_weights_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:cars_web/core/widgets/header.dart';
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:cars_web/pages/buy_page/widgets/SliderFilter.dart';
 import 'package:cars_web/pages/buy_page/widgets/view_cars.dart';
 import 'package:cars_web/utils/responsive_helper.dart';
-import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../core/widgets/end_drawer.dart';
 import '../home_page/widgets/footer/footer.dart';
 
@@ -17,13 +18,15 @@ class BuyPage extends StatefulWidget {
 
 class _BuyPageState extends State<BuyPage> {
   final ResponsiveHelper responsiveHelper = GetIt.instance<ResponsiveHelper>();
-  String? selectedSort; // This will hold the selected value
+  String? selectedSort;
+  String? selectedCarMake;// This will hold the selected value
 
   @override
   void initState() {
     super.initState();
-    selectedSort = 'خصائص'; // Set the default value
+    selectedSort = 'خصائص'; // Default value can be localized dynamically
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +37,10 @@ class _BuyPageState extends State<BuyPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Header(),
+            const Header(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Check if the device is not mobile to show SidebarFilter
                 if (!responsiveHelper.isMobile(context))
                   SizedBox(
                     width: responsiveHelper.isDesktop(context) ? 250 : responsiveHelper.isTablet(context) ? 235 : null,
@@ -55,7 +57,10 @@ class _BuyPageState extends State<BuyPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text('فرز حسب : '),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(AppLocalizations.of(context)!.sortBy!,style: const TextStyle(fontWeight: FontWeightHelper.semiBold),),
+                            ), // Localized "Sort by" text
                             const SizedBox(width: 10),
                             SizedBox(
                               width: 174.2,
@@ -70,14 +75,16 @@ class _BuyPageState extends State<BuyPage> {
                                 child: DropdownButton<String>(
                                   value: selectedSort,
                                   dropdownColor: Colors.white,
-                                  items: const [
-                                    DropdownMenuItem(value: 'خصائص', child: Text('خصائص')),
-                                    DropdownMenuItem(value: 'السعر: من أعلى إلى أقل', child: Text('السعر: من أعلى إلى أقل')),
-                                    DropdownMenuItem(value: 'السعر: من أقل إلى أعلى', child: Text('السعر: من أقل إلى أعلى')),
-                                    DropdownMenuItem(value: 'كيلومتر: من أعلى إلى أقل', child: Text('كيلومتر: من أعلى إلى أقل')),
-                                    DropdownMenuItem(value: 'كيلومتر: من أقل إلى أعلى', child: Text('كيلومتر: من أقل إلى أعلى')),
-                                    DropdownMenuItem(value: 'السنة: من أعلى إلى أقل', child: Text('السنة: من أعلى إلى أقل')),
-                                    DropdownMenuItem(value: 'السنة: من أقل إلى أعلى', child: Text('السنة: من أقل إلى أعلى')),
+                                  underline: Container(),
+                                  isExpanded: true,
+                                  items:  [
+                                    DropdownMenuItem(value: 'خصائص', child: Text(AppLocalizations.of(context)!.characteristics!)),
+                                    DropdownMenuItem(value: 'السعر: من أعلى إلى أقل', child: Text(AppLocalizations.of(context)!.priceFromHighToLow!)),
+                                    DropdownMenuItem(value: 'السعر: من أقل إلى أعلى', child: Text(AppLocalizations.of(context)!.priceFromLowToHigh!)),
+                                    DropdownMenuItem(value: 'كيلومتر: من أعلى إلى أقل', child: Text(AppLocalizations.of(context)!.kilometerFromHighToLow!)),
+                                    DropdownMenuItem(value: 'كيلومتر: من أقل إلى أعلى', child: Text(AppLocalizations.of(context)!.kilometerFromLowToHigh!)),
+                                    DropdownMenuItem(value: 'السنة: من أعلى إلى أقل', child: Text(AppLocalizations.of(context)!.yearFromHighToLow!)),
+                                    DropdownMenuItem(value: 'السنة: من أقل إلى أعلى', child: Text(AppLocalizations.of(context)!.yearFromLowToHigh!)),
                                   ],
                                   onChanged: (String? newValue) {
                                     setState(() {
@@ -90,9 +97,8 @@ class _BuyPageState extends State<BuyPage> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(height: 20),
                       ViewCars(),
-
                     ],
                   ),
                 ),

@@ -1,75 +1,97 @@
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:cars_web/pages/buy_page/widgets/FilterCategory.dart';
 import 'package:flutter/material.dart';
 
 class SidebarFilter extends StatelessWidget {
-  final List<Map<String, dynamic>> filters = [
-    {
-      'title': 'الأكثر شعبية',
-      'icon': Icons.whatshot,
-      'subFilters': [
-        'النوع',
-        'الموقع',
-        'السنة',
-        'السعر',
-        'عداد المسافات',
-        'ناقل الحركة',
-        'نوع الهيكل',
-        'جديد / مستعمل',
-        'وقود / كهربائي',
-        'الكلمة المفتاحية'
-      ],
-    },
-    {'title': 'المحرك', 'icon': Icons.engineering,
-      'subFilters': [
-        'نوع محرك الاقراص',
-        'الاقتصاد في استهلاك الوقود',
-        'اسطونات',
-        'الحث والتربو',
-        'حجم المحرك',
-        'حالة معتمده للوجه p',
-        'وصف المحرك',
-        'سحب(المكابح)',
-        'القدره علي الوزن'
-       ]
-    },
-    {'title': 'تفاصيل البائع', 'icon': Icons.person,
-      'subFilters': [
-        'تاجر/خاص',
-        'تمويل'
-      ]},
-    {'title': 'الأسلوب', 'icon': Icons.directions_car, 'subFilters':
-    [
-      'نمط الحياة',
-      'لون',
-      'مقاعد',
-      'أبواب'
-    ]},
-    {'title': 'المزايا', 'icon': Icons.featured_play_list, 'subFilters':
-    ['تصنيف السلامة ANCAP',
-      'المميزات من الألف إلى الياء',
-    ]},
-    {'title': 'حالة السيارة', 'icon': Icons.check_box, 'subFilters':
-    ['معتمد / تم فحصه',
-      'عرض السيارات التي تحتوي فقط على'
-    ]},
-    {'title': 'كهربائي', 'icon': Icons.electric_bolt, 'subFilters': [
-      'يتراوح',
-      'سعة البطارية',
-      'نوع القابس'
-    ]},
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localization = AppLocalizations.of(context)!;
+
+    final List<Map<String, dynamic>> filters = [
+      {
+        'title': localization.popular!,
+        'icon': Icons.whatshot,
+        'subFilters': [
+          localization.listPopular![0],
+          localization.listPopular![1],
+          localization.listPopular![2],
+          localization.listPopular![3],
+          localization.listPopular![4],
+          localization.listPopular![5],
+          localization.listPopular![6],
+          localization.listPopular![7],
+          localization.listPopular![8],
+        ],
+      },
+      {
+        'title': localization.engine!,
+        'icon': Icons.engineering,
+        'subFilters': [
+          localization.listEngine![0],
+          localization.listEngine![1],
+          localization.listEngine![2],
+          localization.listEngine![3],
+          localization.listEngine![4],
+          localization.listEngine![5],
+          localization.listEngine![6],
+          localization.listEngine![7],
+          localization.listEngine![8],
+        ],
+      },
+      {
+        'title': localization.sellerDetails!,
+        'icon': Icons.person,
+        'subFilters': [
+          localization.listSellerDetails![0],
+          localization.listSellerDetails![1],
+        ],
+      },
+      {
+        'title': localization.style!,
+        'icon': Icons.directions_car,
+        'subFilters': [
+          localization.listStyle![0],
+          localization.listStyle![1],
+          localization.listStyle![2],
+          localization.listStyle![3],
+        ],
+      },
+      {
+        'title':localization.features!,
+        'icon': Icons.featured_play_list,
+        'subFilters': [
+          localization.listFeatures![0],
+          localization.listFeatures![1],
+        ],
+      },
+      {
+        'title': localization.carCondition!,
+        'icon': Icons.check_box,
+        'subFilters': [
+          localization.listCarCondition![0],
+          localization.listCarCondition![1],
+        ],
+      },
+      {
+        'title': localization.electric,
+        'icon': Icons.electric_bolt,
+        'subFilters': [
+          localization.listElectric![0],
+          localization.listElectric![1],
+          localization.listElectric![2],
+        ],
+      },
+    ];
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ListTile(
-            title: Text('التصفية', style: TextStyle(fontWeight: FontWeight.bold)),
-            trailing: Text('مسح الكل', style: TextStyle(color: Colors.grey)),
+          ListTile(
+            title: Text(localization.theLiquidation!, style: const TextStyle(fontWeight: FontWeight.bold)),
+            trailing: Text(localization.deleteAll!, style: const TextStyle(color: Colors.grey)),
           ),
           const Divider(),
           ListView.builder(

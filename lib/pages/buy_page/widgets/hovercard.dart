@@ -1,3 +1,4 @@
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../../../core/Theming/font_weights_helper.dart';
 import '../../../core/icons/icons.dart';
@@ -81,27 +82,13 @@ class _HoverCardState extends State<HoverCard> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: Image.asset(
-                              IconsApp.heart,
-                              width: 24,
-                              height: 24,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
+
                     ],
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 18),
                     child: Text(
-                      'تسجيل الدخول للحصول على السعر',
+                      AppLocalizations.of(context)!.login_for_price!,
                       style: TextStyle(fontWeight: FontWeightHelper.bold, fontSize: 20),
                     ),
                   ),
