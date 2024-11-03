@@ -13,6 +13,7 @@ class CarsWebsite extends StatelessWidget {
   final AppRouter appRouter;
 
   const CarsWebsite({super.key, required this.appRouter});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -24,7 +25,7 @@ class CarsWebsite extends StatelessWidget {
             primaryColor: kGreenColor,
             primarySwatch: Colors.green,
             textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(),
-            scaffoldBackgroundColor: Colors.white
+            scaffoldBackgroundColor: Colors.white,
           ),
           debugShowCheckedModeBanner: false,
           locale: localeModel.locale,

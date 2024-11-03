@@ -80,7 +80,7 @@ class _MyEndDrawerState extends State<MyEndDrawer> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: ListTile(
-              title: const Text('الرئيسية',style: TextStyle(fontWeight: FontWeight.bold),),
+              title: InkWell(onTap: (){Navigator.pushNamed(context, Routes.homeScreen);},child: const Text('الرئيسية',style: TextStyle(fontWeight: FontWeight.bold),)),
               onTap: () {
                 _incrementNotification(); // Increment notification on tap
               },

@@ -56,7 +56,7 @@ class Header extends StatelessWidget {
                                     padding: const EdgeInsets.all(20),
                                   ),
                                   child: Text(
-                                    AppLocalizations.of(context)!.login!,
+                                    AppLocalizations.of(context)!.contactUs!,
                                     style: const TextStyle(color: kGreenColor, fontSize: 18),
                                   ),
                                 ),

@@ -15,16 +15,14 @@ class AppLocalizations {
       'buy':'Buy',
       'contact_us': 'Contact Us',
       'help':'help',
-      'login':'Login',
       'get_car':'Get a New Car',
       'login_for_price': 'Log in for price'
     },
     'ar': {
       'home':'الرئيسية',
       'buy':'شراء',
-      'contact_us':'التواصل معنا',
+      'contact_us':' اتصل بنا',
       'help':'المساعده',
-      'login':'تسجيل الدخول',
       'get_car':'احصل علي سيارتك الجديده',
       'login_for_price':'تسجيل الدخول للحصول على السعر'
     }

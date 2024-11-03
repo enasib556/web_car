@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../constants.dart';
-
-
+import '../../utils/responsive_helper.dart';
+import 'package:get_it/get_it.dart';
 class BorderedButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final ResponsiveHelper responsiveHelper = GetIt.instance<ResponsiveHelper>();
 
-  const BorderedButton({
+
+   BorderedButton({
     super.key,
     required this.label,
     required this.onPressed,
@@ -24,9 +26,15 @@ class BorderedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      child: Text(
-        label,
-        style: const TextStyle(color: kGreenColor, fontSize: 20),
+      child: Center(
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: TextStyle(color: kGreenColor, fontSize:responsiveHelper.isDesktop(context)?18:responsiveHelper.isTablet(context)?16:12),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

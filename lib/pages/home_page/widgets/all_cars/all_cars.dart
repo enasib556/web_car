@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import '../../../../constants.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../utils/responsive_helper.dart';
 
 class AllCars extends StatefulWidget {
@@ -20,27 +21,32 @@ class _AllCarsState extends State<AllCars> {
     {
       "name": "Car 1",
       "price": "\$20,000",
-      "image": "https://editorial.pxcrush.net/carsales/general/editorial/2024-volkswagen-skoda-cupra-europe-021.jpg",
+      "image":
+          "https://editorial.pxcrush.net/carsales/general/editorial/2024-volkswagen-skoda-cupra-europe-021.jpg",
     },
     {
       "name": "Car 2",
       "price": "\$25,000",
-      "image": "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
+      "image":
+          "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
     },
     {
       "name": "Car 3",
       "price": "\$30,000",
-      "image": "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
+      "image":
+          "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
     },
     {
       "name": "Car 4",
       "price": "\$35,000",
-      "image": "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
+      "image":
+          "https://editorial.pxcrush.net/carsales/general/editorial/smart-3-feature-001.jpg",
     },
     {
       "name": "Car 5",
       "price": "\$40,000",
-      "image": "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
+      "image":
+          "https://editorial.pxcrush.net/carsales/general/editorial/2024-mazda-bt-50-xtr-01.jpg",
     },
   ];
 
@@ -77,9 +83,7 @@ class _AllCarsState extends State<AllCars> {
               else
                 TextButton(
                   onPressed: () {
-                    if (kDebugMode) {
-                      print('View All pressed');
-                    }
+                    Navigator.pushNamed(context, Routes.buyScreen);
                   },
                   child: const Text(
                     "اعرض المزيد",
@@ -94,7 +98,11 @@ class _AllCarsState extends State<AllCars> {
           ),
         ),
         SizedBox(
-          height: responsiveHelper.isDesktop(context) ? 350 : responsiveHelper.isTablet(context) ? 300 : 200,
+          height: responsiveHelper.isDesktop(context)
+              ? 350
+              : responsiveHelper.isTablet(context)
+                  ? 300
+                  : 200,
           width: MediaQuery.sizeOf(context).width,
           child: ListView.builder(
             controller: _scrollController,
@@ -113,7 +121,11 @@ class _AllCarsState extends State<AllCars> {
     return Padding(
       padding: const EdgeInsets.all(4),
       child: SizedBox(
-        width: responsiveHelper.isDesktop(context) ? 565 : responsiveHelper.isTablet(context) ? 300 : 150,
+        width: responsiveHelper.isDesktop(context)
+            ? 565
+            : responsiveHelper.isTablet(context)
+                ? 300
+                : 150,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -124,10 +136,15 @@ class _AllCarsState extends State<AllCars> {
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Image.network(
                   cars[index]["image"]!,
-                  height: responsiveHelper.isDesktop(context) ? 250 : responsiveHelper.isTablet(context) ? 200 : 100,
+                  height: responsiveHelper.isDesktop(context)
+                      ? 250
+                      : responsiveHelper.isTablet(context)
+                          ? 200
+                          : 100,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -139,7 +156,8 @@ class _AllCarsState extends State<AllCars> {
                   children: [
                     Text(
                       cars[index]["name"]!,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
                     Text(
@@ -173,7 +191,12 @@ class _AllCarsState extends State<AllCars> {
   void _scrollToCurrentIndex() {
     // Scroll the list to the current index
     _scrollController.animateTo(
-      _currentIndex * (responsiveHelper.isDesktop(context) ? 565 : responsiveHelper.isTablet(context) ? 300 : 150),
+      _currentIndex *
+          (responsiveHelper.isDesktop(context)
+              ? 565
+              : responsiveHelper.isTablet(context)
+                  ? 300
+                  : 150),
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
