@@ -1,0 +1,33 @@
+[33me22a779[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to e22a779c7168891ae35754e30f1affc3b522b884
+[33m69af9bc[m HEAD@{1}: checkout: moving from main to main
+[33m69af9bc[m HEAD@{2}: checkout: moving from main to main
+[33m69af9bc[m HEAD@{3}: rebase (finish): returning to refs/heads/main
+[33m69af9bc[m HEAD@{4}: rebase (pick): code
+[33me22a779[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{5}: rebase (continue): code
+[33m30f0d1c[m HEAD@{6}: rebase (continue): code
+[33m4a8c8d4[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{7}: pull origin main --rebase (start): checkout 4a8c8d4c6b3c81aab1359ddbb736bce32404a470
+[33m603e453[m HEAD@{8}: commit (amend): code
+[33m7f963b9[m HEAD@{9}: commit (amend): code
+[33m4a747c6[m HEAD@{10}: commit (amend): code
+[33m7d4edaf[m HEAD@{11}: commit (amend): code
+[33mb8ea6d1[m HEAD@{12}: rebase (abort): returning to refs/heads/main
+[33m4a8c8d4[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{13}: pull origin main --rebase (start): checkout 4a8c8d4c6b3c81aab1359ddbb736bce32404a470
+[33mb8ea6d1[m HEAD@{14}: commit (amend): code
+[33md252f26[m HEAD@{15}: commit (amend): code
+[33mb5cb154[m HEAD@{16}: reset: moving to HEAD
+[33mb5cb154[m HEAD@{17}: commit (amend): code
+[33m85ac5d5[m HEAD@{18}: commit: code
+[33med639f1[m HEAD@{19}: commit (amend): code
+[33m570c72f[m HEAD@{20}: commit (amend): code
+[33m1787175[m HEAD@{21}: reset: moving to HEAD
+[33m1787175[m HEAD@{22}: reset: moving to HEAD
+[33m1787175[m HEAD@{23}: commit (amend): code
+[33m38fda47[m HEAD@{24}: commit (amend): code
+[33mb2e2c28[m HEAD@{25}: commit (amend): code
+[33m7c4d5d6[m HEAD@{26}: commit: code
+[33m67e0055[m HEAD@{27}: commit (amend): code
+[33m4a8c8d4[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{28}: Branch: renamed refs/heads/main to refs/heads/main
+[33m4a8c8d4[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{30}: commit: code
+[33m946f23f[m HEAD@{31}: commit: code
+[33m570a8c4[m HEAD@{32}: commit: code
+[33mdf00dac[m HEAD@{33}: clone: from https://github.com/modwedar/cars_web.git

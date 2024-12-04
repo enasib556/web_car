@@ -93,7 +93,7 @@ class _DrawerHeaderWidgetState extends State<DrawerHeaderWidget> {
 class _NotificationIcon extends StatelessWidget {
   final int notificationCount;
 
-  const _NotificationIcon({super.key, required this.notificationCount});
+  const _NotificationIcon({required this.notificationCount});
 
   @override
   Widget build(BuildContext context) {
