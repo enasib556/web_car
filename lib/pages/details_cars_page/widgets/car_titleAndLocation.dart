@@ -3,29 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/Theming/font_weights_helper.dart';
 
-// class CarTitleAndLocation extends StatelessWidget {
-//
-//   const CarTitleAndLocation({super.key,required this.title, required this.location});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Text(
-//         title,
-//           style:const  TextStyle(fontSize: 26, fontWeight: FontWeightHelper.extraBold),
-//         ),
-//         Row(
-//           children: [
-//             const Icon(Icons.location_on),
-//             Text(location),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
 
 class CarTitleAndLocation extends StatelessWidget {
   const CarTitleAndLocation({super.key});

@@ -1,15 +1,13 @@
 import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../../../core/Theming/font_weights_helper.dart';
-import '../../../core/icons/icons.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/bordered_button.dart';
 import '../../../core/widgets/green_button.dart';
 import '../../../utils/responsive_helper.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../details_cars_page/widgets/contact_form.dart';
-import '../../../core/widgets/_showAlertDialog.dart'; // Import the CustomAlertDialog widget
+import '../../../core/widgets/_showAlertDialog.dart';
 
 class HoverCard extends StatefulWidget {
   final Map<String, String> carData;
@@ -85,13 +83,7 @@ class _HoverCardState extends State<HoverCard> {
 
                     ],
                   ),
-                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 18),
-                    child: Text(
-                      AppLocalizations.of(context)!.login_for_price!,
-                      style: TextStyle(fontWeight: FontWeightHelper.bold, fontSize: 20),
-                    ),
-                  ),
+                  const SizedBox(height: 10,),
                   const Divider(thickness: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +123,7 @@ class _HoverCardState extends State<HoverCard> {
                     children: [
                       Expanded(
                         child: BorderedButton(
-                          label: 'Contact Seller',
+                          label: AppLocalizations.of(context)!.contactSeller!,
                           onPressed: () {
                             showCustomAlertDialog(
                               context,
@@ -148,7 +140,7 @@ class _HoverCardState extends State<HoverCard> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: GreenButton(
-                          label: 'View Details',
+                          label: AppLocalizations.of(context)!.viewDetails!,
                           onPressed: () {
                             Navigator.pushNamed(context, Routes.DetailsCarPage);
                           },

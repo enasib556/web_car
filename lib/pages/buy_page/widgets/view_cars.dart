@@ -131,7 +131,7 @@ class ViewCars extends StatelessWidget {
             crossAxisCount: responsiveHelper.isDesktop(context)?3:1,
             crossAxisSpacing: 15.0,
             mainAxisSpacing: 25.0,
-            childAspectRatio: responsiveHelper.isDesktop(context)?0.618:responsiveHelper.isTablet(context)?0.73:0.555,
+            childAspectRatio: responsiveHelper.isDesktop(context)?0.685:responsiveHelper.isTablet(context)?0.785:0.615,
           ),
           itemCount: cars.length,
           itemBuilder: (context, index) {

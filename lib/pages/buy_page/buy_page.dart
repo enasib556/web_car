@@ -6,7 +6,7 @@ import 'package:cars_web/pages/buy_page/widgets/SliderFilter.dart';
 import 'package:cars_web/pages/buy_page/widgets/view_cars.dart';
 import 'package:cars_web/utils/responsive_helper.dart';
 import 'package:get_it/get_it.dart';
-import '../../core/widgets/end_drawer.dart';
+import '../../core/widgets/end_drawer/end_drawer.dart';
 import '../home_page/widgets/footer/footer.dart';
 
 class BuyPage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _BuyPageState extends State<BuyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const MyEndDrawer(),
+      endDrawer:  const MyEndDrawer(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -78,7 +78,10 @@ class _BuyPageState extends State<BuyPage> {
                                   underline: Container(),
                                   isExpanded: true,
                                   items:  [
-                                    DropdownMenuItem(value: 'خصائص', child: Text(AppLocalizations.of(context)!.characteristics!)),
+                                    DropdownMenuItem(value: 'خصائص', child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(AppLocalizations.of(context)!.characteristics!),
+                                    )),
                                     DropdownMenuItem(value: 'السعر: من أعلى إلى أقل', child: Text(AppLocalizations.of(context)!.priceFromHighToLow!)),
                                     DropdownMenuItem(value: 'السعر: من أقل إلى أعلى', child: Text(AppLocalizations.of(context)!.priceFromLowToHigh!)),
                                     DropdownMenuItem(value: 'كيلومتر: من أعلى إلى أقل', child: Text(AppLocalizations.of(context)!.kilometerFromHighToLow!)),

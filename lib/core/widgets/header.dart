@@ -1,3 +1,4 @@
+import 'package:cars_web/core/Theming/font_weights_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -120,9 +121,9 @@ class Header extends StatelessWidget {
                                       value: 2,
                                       child: ConstrainedBox(
                                         constraints: const BoxConstraints(maxWidth: 170),
-                                        child: const Text(
-                                          'Logout',
-                                          style: TextStyle(color: Colors.red),
+                                        child:  Text(
+                                          AppLocalizations.of(context)!.logout!,
+                                          style: const TextStyle(color: Colors.red,fontWeight: FontWeightHelper.bold),
                                         ),
                                       ),
                                     ),
@@ -158,7 +159,7 @@ class Header extends StatelessWidget {
                                   width: 100,
                                   child: DropdownButtonHideUnderline(
                                     child: DropdownButton<String>(
-                                      value: Provider.of<LocaleModel>(context).locale.languageCode,
+                                      value: Provider.of<LocaleModel>(context).currentLocale.languageCode,
                                       icon: Container(),
                                       isExpanded: true,
                                       items: [

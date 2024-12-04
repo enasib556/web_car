@@ -27,7 +27,7 @@ class CarsWebsite extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
           debugShowCheckedModeBanner: false,
-          locale: localeModel.locale,
+          locale: localeModel.currentLocale,
           localizationsDelegates: [
             AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,

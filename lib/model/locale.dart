@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LocaleModel extends ChangeNotifier {
-  Locale? _locale;
+class LocaleModel with ChangeNotifier {
 
-  Locale get locale {
-   return _locale ?? const Locale('ar');
-  }
+  Locale _currentLocale = const Locale('ar'); // اللغة الافتراضية العربية
 
-  void set(Locale locale) {
-    _locale = locale;
-    notifyListeners();
+  Locale get currentLocale => _currentLocale;
+
+  void set(Locale newLocale) {
+    _currentLocale = newLocale;
+    notifyListeners();  // إخطار المستمعين لتحديث الواجهة
   }
 }

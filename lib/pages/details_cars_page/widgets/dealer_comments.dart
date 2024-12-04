@@ -1,29 +1,6 @@
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-// class DealerComments extends StatelessWidget {
-//   final String comments;
-//   const DealerComments({super.key, required this.comments});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         const Text(
-//           "Comments from the dealer",
-//           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-//         ),
-//         const SizedBox(height: 10),
-//         Text(
-//           comments,
-//           maxLines: 4,
-//           overflow: TextOverflow.clip,
-//           style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-//         ),
-//       ],
-//     );
-//   }
-// }
 
 class DealerComments extends StatelessWidget {
   const DealerComments({super.key});
@@ -33,9 +10,9 @@ class DealerComments extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Comments from the dealer",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+         Text(
+          AppLocalizations.of(context)!.commentsFromDealer!,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
         Text(

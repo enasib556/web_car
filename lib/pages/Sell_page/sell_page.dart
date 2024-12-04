@@ -7,8 +7,11 @@ import 'package:cars_web/pages/Sell_page/widgets/car_price_selection.dart';
 import 'package:cars_web/pages/Sell_page/widgets/car_type_selection.dart';
 import 'package:cars_web/pages/Sell_page/widgets/car_year_selection.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../core/routing/routes.dart';
-import '../../core/widgets/end_drawer.dart';
+import '../../core/widgets/end_drawer/end_drawer.dart';
+import '../../utils/responsive_helper.dart';
+import 'package:get_it/get_it.dart';
 
 class SellPage extends StatefulWidget {
   const SellPage({super.key});
@@ -22,12 +25,14 @@ class _SellPageState extends State<SellPage> {
   final TextEditingController odometerController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
+  final responsiveHelper = GetIt.instance<ResponsiveHelper>();
   String? selectedCarMake;
   String? selectedCarModel;
   String? selectedCarYear;
   String? selectedCarType;
   String odometerReading = '';
   String carLocation = '';
+  List<XFile> carImages = [];
   final Map<String, List<String>> carModels = {
     'Mazda': ['CX-5', 'Mazda3', 'MX-5'],
     'Ford': ['F-150', 'Mustang', 'Explorer'],
@@ -79,7 +84,7 @@ class _SellPageState extends State<SellPage> {
     );
   }
 
-  void _scrollToModelSection() {
+  void _scrollToModelAndYear() {
     if (selectedCarMake != null) {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
@@ -88,26 +93,12 @@ class _SellPageState extends State<SellPage> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a car make first')),
+        const SnackBar(content: Text('Please select first')),
       );
     }
   }
 
-  void _scrollToYearSection() {
-    if (selectedCarModel != null) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a car model first')),
-      );
-    }
-  }
-
-  void _scrollToTypeSection() {
+  void _scrollToTypeAndOdometerAndLocationAndPriceSection() {
     if (selectedCarYear != null) {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent + 1000,
@@ -121,138 +112,26 @@ class _SellPageState extends State<SellPage> {
     }
   }
 
-  void _scrollToOdometerReading() {
-    if (selectedCarType != null) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 1000,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a car type')),
-      );
-    }
-  }
-
-  void _scrollToLocationCarSell() {
-    if (odometerReading.trim().isNotEmpty) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 1000,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter the odometer reading')),
-      );
-    }
-  }
-  void _scrollToCarPriceSelection() {
-    if (carLocation.trim().isNotEmpty) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 1000,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter the car Location')),
-      );
-    }
-  }
-
-
-
-
-  void _goBackToCarLocation() {
-    odometerController.clear();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent - 750,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  void _goBackToOdometerReading() {
-    odometerController.clear();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent - 750,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  void _goBackToTypeSelection() {
+  void _goBackTo(VoidCallback updateStateCallback, double positionOffset) {
     setState(() {
-      selectedCarType = null;
+      updateStateCallback();
     });
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent - 750,
+        positionOffset >= 0 ? positionOffset : 0, // التأكد من أن الموضع ليس أقل من 0
         duration: const Duration(seconds: 1),
         curve: Curves.easeInOut,
       );
     });
   }
 
-  void _goBackToYearSelection() {
-    setState(() {
-      selectedCarType = null;
-      selectedCarYear = null;
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  void _goBackToModelSelection() {
-    setState(() {
-      selectedCarModel = null;
-      selectedCarYear = null;
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  void _goBackToMakeSelection() {
-    setState(() {
-      selectedCarMake = null;
-      selectedCarModel = null;
-      selectedCarYear = null;
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.animateTo(
-        0.0,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      endDrawer: const MyEndDrawer(),
+      endDrawer:  const MyEndDrawer(),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
@@ -267,7 +146,7 @@ class _SellPageState extends State<SellPage> {
                   selectedCarMake = newValue;
                 });
               },
-              onNextPressed: _scrollToModelSection,
+              onNextPressed: _scrollToModelAndYear,
             ),
             CarModelSelection(
               selectedCarMake: selectedCarMake,
@@ -281,8 +160,12 @@ class _SellPageState extends State<SellPage> {
                   availableYears = modelYears[newValue!] ?? [];
                 });
               },
-              onBackPressed: _goBackToMakeSelection,
-              onNextPressed: _scrollToYearSection,
+              onBackPressed:(){
+                _goBackTo(() {
+                  selectedCarMake = null;
+              }, 0.0);
+              },
+              onNextPressed: _scrollToModelAndYear,
             ),
             if (selectedCarModel != null)
               CarYearSelection(
@@ -295,8 +178,12 @@ class _SellPageState extends State<SellPage> {
                     selectedCarYear = newValue;
                   });
                 },
-                onBackPressed: _goBackToModelSelection,
-                onNextPressed: _scrollToTypeSection,
+                onBackPressed: () {
+                  _goBackTo(() {
+                    selectedCarModel = null;
+                  },responsiveHelper.isDesktop(context)?_scrollController.position.maxScrollExtent-750:_scrollController.position.maxScrollExtent-500); // تعديل موضع الرجوع للأعلى
+                },
+                onNextPressed:  _scrollToTypeAndOdometerAndLocationAndPriceSection,
               ),
             if (selectedCarYear != null)
               CarTypeSelection(
@@ -309,8 +196,12 @@ class _SellPageState extends State<SellPage> {
                     selectedCarType = newValue;
                   });
                 },
-                onBackPressed: _goBackToYearSelection,
-                onNextPressed: _scrollToOdometerReading,
+                onBackPressed: (){
+                  _goBackTo(() {
+                    selectedCarYear = null;
+                  }, _scrollController.position.maxScrollExtent);
+                },
+                onNextPressed:  _scrollToTypeAndOdometerAndLocationAndPriceSection,
               ),
             if (selectedCarType != null)
               OdometerReading(
@@ -323,20 +214,33 @@ class _SellPageState extends State<SellPage> {
                     odometerReading = newValue;
                   });
                 },
-                onBackPressed: _goBackToTypeSelection,
-                onNextPressed: _scrollToLocationCarSell,
+                onBackPressed: (){
+                  _goBackTo(() {
+                    selectedCarType = null;
+                    odometerReading = '';
+                    odometerController.clear();
+                  },responsiveHelper.isDesktop(context)?_scrollController.position.maxScrollExtent-750:_scrollController.position.maxScrollExtent-650);
+                },
+                onNextPressed:  _scrollToTypeAndOdometerAndLocationAndPriceSection,
                 odometerController: odometerController,
               ),
             if (odometerReading.trim().isNotEmpty)
               CarLocationInput(
                 locationController: locationController,
-                onBackPressed: _goBackToOdometerReading,
+                onBackPressed: (){
+                  _goBackTo(() {
+                    odometerReading = '';
+                    carLocation = '';
+                    locationController.clear();
+                    odometerController.clear();
+                  }, responsiveHelper.isDesktop(context)?_scrollController.position.maxScrollExtent-750:_scrollController.position.maxScrollExtent-650);
+                },
                 selectedCarModel: selectedCarModel ?? '',
                 selectedCarType: selectedCarType ?? '',
                 selectedCarYear: selectedCarYear ?? '',
                 odometerReading: odometerReading,
                 onCarChangePressed: _resetCarSelection,
-                onNextPressed: _scrollToCarPriceSelection,
+                onNextPressed:  _scrollToTypeAndOdometerAndLocationAndPriceSection,
                 selectedCarMake: selectedCarMake ?? '',
                 onLocationChanged: (newValue) {
                   setState(() {
@@ -346,20 +250,25 @@ class _SellPageState extends State<SellPage> {
               ),
             if (carLocation.trim().isNotEmpty)
               CarPriceSelection(
-                selectedCarMake: selectedCarMake ?? '',
-                selectedCarModel: selectedCarModel ?? '',
-                selectedCarType: selectedCarType ?? '',
-                selectedCarYear: selectedCarYear ?? '',
-                odometerReading: odometerReading,
-                onCarChangePressed: _resetCarSelection,
-                onBackPressed: _goBackToCarLocation,
+                  selectedCarMake: selectedCarMake ?? '',
+                  selectedCarModel: selectedCarModel ?? '',
+                  selectedCarType: selectedCarType ?? '',
+                  selectedCarYear: selectedCarYear ?? '',
+                  odometerReading: odometerReading,
+                  onCarChangePressed: _resetCarSelection,
+                  onBackPressed:  (){
+                    _goBackTo(() {
+                      carLocation = '';
+                      locationController.clear();
+                    },  responsiveHelper.isDesktop(context)?_scrollController.position.maxScrollExtent-750:_scrollController.position.maxScrollExtent-650);
+                  },
                   onSellPressed: () {
                     Navigator.pushNamed(context, Routes.buyScreen,);
                   },
-                carLocationInput: carLocation,
-                priceController: priceController,
-                onPriceChanged:  (newValue) {}
-              )
+                  carLocationInput: carLocation,
+                  priceController: priceController,
+                  onPriceChanged:  (newValue) {}
+              ),
           ],
         ),
       ),

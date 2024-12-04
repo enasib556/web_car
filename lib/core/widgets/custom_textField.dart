@@ -13,7 +13,7 @@ class TextFieldUsed extends StatelessWidget {
     required this.controller,
     required this.label,
     required this.keyboardType,
-    required this.validator,
+     this.validator,
     this.obscureText = false, // إذا كانت قيمة غير محددة، سيكون false افتراضيًا
     this.suffixIcon, // إذا كانت قيمة غير محددة، لن يكون هناك أيقونة افتراضيًا
   });

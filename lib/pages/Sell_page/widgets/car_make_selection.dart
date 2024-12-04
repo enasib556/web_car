@@ -32,7 +32,7 @@ class CarMakeSelection extends StatelessWidget {
           Flexible(
             flex: responsiveHelper.isDesktop(context)?5:responsiveHelper.isTablet(context)?3:1,
             child: Text(
-              AppLocalizations.of(context)!.letsStartToSellCar!,
+             AppLocalizations.of(context)!.letsStartToSellCar!,
               style: TextStyle(
                 fontWeight: FontWeightHelper.extraBold,
                 fontSize: responsiveHelper.isDesktop(context) ? 30 : 24,

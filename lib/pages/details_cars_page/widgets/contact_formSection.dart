@@ -1,3 +1,5 @@
+import 'package:cars_web/core/routing/routes.dart';
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import '../../../utils/responsive_helper.dart';
@@ -25,9 +27,9 @@ class ContactFormSection extends StatelessWidget {
                 width: double.infinity,
                 height: 40,
                 child: InkWell(
-                  onTap: (){},
-                  child: const Text(
-                    'Log in for price',
+                  onTap: (){ Navigator.pushNamed(context, Routes.loginScreen);},
+                  child:  Text(
+                    AppLocalizations.of(context)!.login_for_price!,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ),

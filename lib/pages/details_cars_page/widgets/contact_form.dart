@@ -1,3 +1,4 @@
+import 'package:cars_web/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import '../../../utils/responsive_helper.dart';
@@ -39,44 +40,44 @@ class _ContactFormState extends State<ContactForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Ask the dealer a question",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+             Text(
+              AppLocalizations.of(context)!.askDealerQuestion!,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Message (Optional)',
-              style: TextStyle(color: Colors.black, fontSize: 12),
+             Text(
+              AppLocalizations.of(context)!.messageOptional!,
+              style: const TextStyle(color: Colors.black, fontSize: 12),
             ),
             const SizedBox(height: 10),
-            const CustomTextField(
-              labelText: "Type your message here",
+             CustomTextField(
+              labelText: AppLocalizations.of(context)!.typeYourMessageHere!,
               maxLines: 4,
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Full name',
-              style: TextStyle(color: Colors.black, fontSize: 12),
+             Text(
+              AppLocalizations.of(context)!.fullName!,
+              style: const TextStyle(color: Colors.black, fontSize: 12),
             ),
             const SizedBox(height: 10),
             CustomTextField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Name required';
+                  return AppLocalizations.of(context)!.nameRequired!;
                 }
                 return null;
               },
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Email',
-              style: TextStyle(color: Colors.black, fontSize: 12),
+             Text(
+              AppLocalizations.of(context)!.email!,
+              style: const TextStyle(color: Colors.black, fontSize: 12),
             ),
             const SizedBox(height: 10),
             CustomTextField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Email required';
+                  return AppLocalizations.of(context)!.emailRequired!;
                 }
                 return null;
               },
@@ -87,15 +88,15 @@ class _ContactFormState extends State<ContactForm> {
                 Expanded(
                   child: Column(
                     children: [
-                      const Text(
-                        'Phone number',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                       Text(
+                        AppLocalizations.of(context)!.phone!,
+                        style: const TextStyle(color: Colors.black, fontSize: 12),
                       ),
                       const SizedBox(height: 10),
                       CustomTextField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'PhoneNumber required';
+                            return AppLocalizations.of(context)!.phoneNumberRequired!;
                           }
                           return null;
                         },
@@ -107,15 +108,15 @@ class _ContactFormState extends State<ContactForm> {
                 Expanded(
                   child: Column(
                     children: [
-                      const Text(
-                        'Postcode',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                       Text(
+                        AppLocalizations.of(context)!.postcode!,
+                        style: const TextStyle(color: Colors.black, fontSize: 12),
                       ),
                       const SizedBox(height: 10),
                       CustomTextField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Postcode required';
+                            return AppLocalizations.of(context)!.postcodeRequired!;
                           }
                           return null;
                         },
@@ -138,8 +139,8 @@ class _ContactFormState extends State<ContactForm> {
                   activeColor: Colors.green,
                   checkColor: Colors.white,
                 ),
-                const Expanded(
-                  child: Text("We're listening! Tell us what you think"),
+                 Expanded(
+                  child: Text(AppLocalizations.of(context)!.weAreListening!),
                 ),
                 const Icon(Icons.info_outline, color: Colors.grey),
               ],
@@ -156,20 +157,20 @@ class _ContactFormState extends State<ContactForm> {
                   activeColor: Colors.green,
                   checkColor: Colors.white,
                 ),
-                const Expanded(
-                  child: Text("Fill in this form for me next time"),
+                 Expanded(
+                  child: Text(AppLocalizations.of(context)!.fillFormNextTime!),
                 ),
                 const Icon(Icons.info_outline, color: Colors.grey),
               ],
             ),
             const SizedBox(height: 10),
             Text(
-              "By proceeding, you agree to carsales network's T&Cs and Privacy Policy.",
+              AppLocalizations.of(context)!.byProceedingAgreeTerms!,
               style: TextStyle(fontSize: 12, color: Colors.grey[600]),
             ),
             const SizedBox(height: 5),
             Text(
-              "See Personal Information Collection Statement.",
+              AppLocalizations.of(context)!.seePersonalInfoStatement!,
               style: TextStyle(fontSize: 12, color: Colors.grey[600]),
             ),
             const SizedBox(height: 20),
@@ -189,9 +190,9 @@ class _ContactFormState extends State<ContactForm> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text(
-                  "Contact seller",
-                  style: TextStyle(
+                child:  Text(
+                  AppLocalizations.of(context)!.contactSeller!,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -205,11 +206,11 @@ class _ContactFormState extends State<ContactForm> {
               builder: (context, constraints) {
                 if (constraints.maxWidth < 400) {
                   // إذا كان العرض أقل من 600، نستخدم عمود
-                  return const Column(
+                  return  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text("Call the dealer"),
-                      Row(
+                       Text(AppLocalizations.of(context)!.callDealer!),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                            Text(
@@ -220,16 +221,16 @@ class _ContactFormState extends State<ContactForm> {
                            Icon(Icons.info_outline, color: Colors.grey),
                         ],
                       ),
-                       Text("Car code: 1134"),
+                        Text(AppLocalizations.of(context)!.carCode1134!),
                     ],
                   );
                 } else {
                   // خلاف ذلك، نستخدم صف
-                  return const Row(
+                  return  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text("Call the dealer"),
-                      Row(
+                       Text(AppLocalizations.of(context)!.callDealer!),
+                      const Row(
                         children: [
                            Text(
                             "(07) 3330 1942",
@@ -239,7 +240,7 @@ class _ContactFormState extends State<ContactForm> {
                            Icon(Icons.info_outline, color: Colors.grey),
                         ],
                       ),
-                       Text("Car code: 1134"),
+                       Text(AppLocalizations.of(context)!.carCode1134!),
                     ],
                   );
                 }

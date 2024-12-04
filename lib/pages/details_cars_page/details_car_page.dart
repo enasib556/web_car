@@ -4,7 +4,7 @@ import 'package:cars_web/pages/details_cars_page/widgets/contact_formSection.dar
 import 'package:cars_web/pages/details_cars_page/widgets/sidebar_filter_widget.dart';
 import 'package:cars_web/pages/home_page/widgets/footer/footer.dart';
 import 'package:flutter/material.dart';
-import '../../core/widgets/end_drawer.dart';
+import '../../core/widgets/end_drawer/end_drawer.dart';
 import '../../core/widgets/header.dart';
 import '../../utils/responsive_helper.dart';
 import 'package:get_it/get_it.dart';
@@ -17,7 +17,7 @@ class DetailsCarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const MyEndDrawer(),
+      endDrawer:  const MyEndDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
